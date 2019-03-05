@@ -7,6 +7,8 @@ import org.joda.time.Seconds;
 
 import java.util.ArrayList;
 
+import id.kiosku.statistic.StatisticManager;
+
 /**
  * Created by Dodi on 01/18/2017.
  */
@@ -19,6 +21,10 @@ public abstract class BaseData {
     public String screenView;
     @SerializedName("page_type")
     public String screenType;
+    {
+        screenView = StatisticManager.getScreenView();
+        screenType = StatisticManager.getScreenType();
+    }
 
     public boolean isInteraction;
 

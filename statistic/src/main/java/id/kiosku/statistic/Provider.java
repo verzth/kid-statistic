@@ -1,7 +1,6 @@
 package id.kiosku.statistic;
 
 import android.os.Handler;
-import android.os.HandlerThread;
 import android.os.Looper;
 import android.support.annotation.NonNull;
 
@@ -20,9 +19,7 @@ public abstract class Provider<A extends BaseData, B extends Provider> {
 
     public Provider(A data) {
         this.data = data;
-        HandlerThread thread = new HandlerThread("statistic");
-        thread.start();
-        handler = new Handler(thread.getLooper());
+        handler = new Handler(Looper.getMainLooper());
     }
 
     public B setCallforward(String callforward) {
