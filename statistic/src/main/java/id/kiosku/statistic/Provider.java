@@ -1,6 +1,7 @@
 package id.kiosku.statistic;
 
 import android.os.Handler;
+import android.os.HandlerThread;
 import android.os.Looper;
 import android.support.annotation.NonNull;
 
@@ -13,13 +14,15 @@ import id.kiosku.statistic.data.BaseData;
 public abstract class Provider<A extends BaseData, B extends Provider> {
     protected A data;
     private Handler handler;
-    private static final int TOTAL_TIMEOUT = 30000;
+    private static final int TOTAL_TIMEOUT = 10000;
     private boolean isTimeout, isTotal;
     private int timeout=5000,total=10;
 
     public Provider(A data) {
         this.data = data;
-        handler = new Handler(Looper.getMainLooper());
+        HandlerThread thread = new HandlerThread("statistic");
+        thread.start();
+        handler = new Handler(thread.getLooper());
     }
 
     public B setCallforward(String callforward) {
