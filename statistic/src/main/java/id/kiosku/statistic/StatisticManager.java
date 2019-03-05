@@ -163,6 +163,7 @@ public class StatisticManager {
     private static String session;
     private static String screenView;
     private static String screenType;
+    private static String userID;
 
     static{
         if(session==null)startSession();
@@ -195,6 +196,18 @@ public class StatisticManager {
 
     public static void setScreenType(String screenType) {
         StatisticManager.screenType = screenType;
+    }
+
+    public static String getUserID() {
+        return userID;
+    }
+
+    public static void setUserID(String userID) {
+        StatisticManager.userID = userID;
+    }
+
+    public static void clearUserID(){
+        StatisticManager.userID = null;
     }
 
     public static StatisticManager getInstance() {

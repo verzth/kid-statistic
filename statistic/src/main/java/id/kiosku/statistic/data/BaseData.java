@@ -24,6 +24,7 @@ public abstract class BaseData {
     {
         screenView = StatisticManager.getScreenView();
         screenType = StatisticManager.getScreenType();
+        userId = StatisticManager.getUserID();
     }
 
     public boolean isInteraction;
