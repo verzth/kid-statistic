@@ -1,7 +1,6 @@
 package id.kiosku.statistic;
 
 import android.content.Context;
-import android.util.Log;
 
 import org.joda.time.DateTime;
 import org.joda.time.Seconds;
@@ -149,7 +148,6 @@ public class StatisticManager {
                             if (listener != null) listener.onFailed();
                         }
                         if(callback!=null)callback.onSent(data);
-                        Log.e("cek",""+response.body().statusCode);
                     }
 
                     @Override
