@@ -105,7 +105,7 @@ public class EventProvider extends Provider<EventData, EventProvider> {
 
                 @Override
                 public void onFail(EventData data) {
-
+                    clearData();
                 }
 
                 @Override

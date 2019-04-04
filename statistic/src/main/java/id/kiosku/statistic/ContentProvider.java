@@ -88,7 +88,7 @@ public class ContentProvider extends Provider<ContentData, ContentProvider> {
 
                 @Override
                 public void onFail(ContentData data) {
-
+                    clearData();
                 }
 
                 @Override
