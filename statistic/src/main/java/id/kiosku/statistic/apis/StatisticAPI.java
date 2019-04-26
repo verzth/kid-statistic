@@ -1,10 +1,10 @@
 package id.kiosku.statistic.apis;
 
+import id.kiosku.statistic.apis.receivers.GeneralApiReceiver;
+import id.kiosku.statistic.data.HitData;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.POST;
-import id.kiosku.statistic.apis.receivers.HitApiReceiver;
-import id.kiosku.statistic.data.BaseData;
 import id.kiosku.statistic.data.ContentData;
 import id.kiosku.statistic.data.EventData;
 
@@ -14,13 +14,15 @@ import id.kiosku.statistic.data.EventData;
 
 public interface StatisticAPI {
     @POST("hit")
-    Call<HitApiReceiver> hit(@Body BaseData params);
+    Call<GeneralApiReceiver> hit(@Body HitData params);
+    @POST("hit")
+    Call<GeneralApiReceiver> hitBulk(@Body HitData params);
     @POST("content")
-    Call<HitApiReceiver> content(@Body ContentData params);
+    Call<GeneralApiReceiver> content(@Body ContentData params);
     @POST("content/bulk")
-    Call<HitApiReceiver> contentBulk(@Body ContentData params);
+    Call<GeneralApiReceiver> contentBulk(@Body ContentData params);
     @POST("event")
-    Call<HitApiReceiver> event(@Body EventData params);
+    Call<GeneralApiReceiver> event(@Body EventData params);
     @POST("event/bulk")
-    Call<HitApiReceiver> eventBulk(@Body EventData params);
+    Call<GeneralApiReceiver> eventBulk(@Body EventData params);
 }

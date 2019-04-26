@@ -17,7 +17,6 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 import id.kiosku.statistic.apis.StatisticAPI;
 import id.kiosku.statistic.apis.receivers.GeneralApiReceiver;
-import id.kiosku.statistic.apis.receivers.HitApiReceiver;
 import id.kiosku.statistic.data.BaseData;
 import id.kiosku.statistic.data.ContentData;
 import id.kiosku.statistic.data.EventData;
@@ -40,6 +39,7 @@ public class StatisticManager {
     public static final int HIT = 0;
     public static final int HIT_CONTENT = 1;
     public static final int HIT_EVENT = 2;
+    public static final int HIT_BULK = 3;
     public static final int HIT_CONTENT_BULK = 4;
     public static final int HIT_EVENT_BULK = 5;
     private Retrofit apis;
@@ -119,8 +119,11 @@ public class StatisticManager {
                 Thread.currentThread().setPriority(Thread.NORM_PRIORITY);
                 StatisticDriver.with(context).attach(data);
                 StatisticAPI statisticAPI = apis.create(StatisticAPI.class);
-                Call<HitApiReceiver> call;
+                Call<GeneralApiReceiver> call;
                 switch (flags){
+                    case HIT_BULK:{
+                        call = statisticAPI.hitBulk((HitData) data);
+                    }break;
                     case HIT_CONTENT:{
                         call = statisticAPI.content((ContentData) data);
                     }break;
@@ -133,11 +136,11 @@ public class StatisticManager {
                     case HIT_EVENT_BULK:{
                         call = statisticAPI.eventBulk((EventData)data);
                     }break;
-                    default: call = statisticAPI.hit(data);
+                    default: call = statisticAPI.hit((HitData)data);
                 }
-                call.enqueue(new Callback<HitApiReceiver>() {
+                call.enqueue(new Callback<GeneralApiReceiver>() {
                     @Override
-                    public void onResponse(Call<HitApiReceiver> call, Response<HitApiReceiver> response) {
+                    public void onResponse(Call<GeneralApiReceiver> call, Response<GeneralApiReceiver> response) {
                         if(response.code()==200){
                             if(response.body()!=null){
                                 if(listener!=null)listener.onResponse(response.body());
@@ -151,7 +154,7 @@ public class StatisticManager {
                     }
 
                     @Override
-                    public void onFailure(Call<HitApiReceiver> call, Throwable t) {
+                    public void onFailure(Call<GeneralApiReceiver> call, Throwable t) {
                         if(listener!=null)listener.onFailed();
                         if(callback!=null)callback.onFail(data);
                     }

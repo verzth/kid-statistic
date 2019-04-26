@@ -28,8 +28,7 @@ public abstract class Provider<A extends BaseData, B extends Provider> {
     }
 
     public B putCustom(@NonNull String name, String value) {
-        data.names.add(name);
-        data.values.add(value);
+        data.attributes.put(name,value);
         return (B) this;
     }
 
@@ -58,8 +57,7 @@ public abstract class Provider<A extends BaseData, B extends Provider> {
     }
 
     public B clearCustom() {
-        data.names.clear();
-        data.values.clear();
+        data.attributes.clear();
         return (B) this;
     }
 

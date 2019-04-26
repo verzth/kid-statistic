@@ -6,6 +6,8 @@ import org.joda.time.DateTime;
 import org.joda.time.Seconds;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 import id.kiosku.statistic.StatisticManager;
 
@@ -69,12 +71,10 @@ public abstract class BaseData {
 
     public ArrayList<BaseData> data;
 
-    public ArrayList<String> names;
-    public ArrayList<String> values;
+    public Map<String,Object> attributes;
     {
         data = new ArrayList<>();
-        names = new ArrayList<>();
-        values = new ArrayList<>();
+        attributes = new HashMap<>();
         logDate = DateTime.now().toString("yyyy-MM-dd");
         logTime = DateTime.now().toString("HH:mm:ss");
     }
