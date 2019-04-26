@@ -1,5 +1,4 @@
-[![Release](https://jitpack.io/v/User/Repo.svg)]
-(<https://jitpack.io/com/github/verzth/kid-statistic>)
+[![Release](https://jitpack.io/v/verzth/kid-statistic.svg)](https://jitpack.io/com/github/verzth/kid-statistic)
 # kid-statistic
 
 ### Compatibilities
