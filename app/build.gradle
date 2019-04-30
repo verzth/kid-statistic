@@ -28,5 +28,5 @@ dependencies {
 
     implementation project(':statistic')
     implementation 'com.github.verzth:tcx-android:1.4.0@aar'
-    implementation 'com.github.verzth:kid-utils:0.0.1@aar'
+    implementation 'com.github.verzth:kid-utils:0.0.4@aar'
 }

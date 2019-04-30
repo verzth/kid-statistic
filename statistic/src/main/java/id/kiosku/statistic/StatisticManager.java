@@ -94,24 +94,24 @@ public class StatisticManager {
         return new EventProvider(new EventData());
     }
 
-    public static void triggerStart(BaseData data){
+    public static <D extends BaseData> void triggerStart(D data){
         data.logDatetimeStart = DateTime.now();
     }
-    public static void triggerEnd(BaseData data){
+    public static <D extends BaseData> void triggerEnd(D data){
         if(data.longTime==null)data.longTime=0;
         data.logDatetimeEnd = DateTime.now();
         try {
             data.longTime += Seconds.secondsBetween(data.logDatetimeStart,data.logDatetimeEnd).getSeconds();
         }catch (Exception e){}
     }
-    public void send(BaseData data){
+    public <D extends BaseData> void send(D data){
         send(data,HIT,null);
     }
-    public void send(BaseData data, int flags){
+    public <D extends BaseData> void send(D data, int flags){
         send(data,flags,null);
     }
     @SuppressWarnings("unchecked")
-    public void send(final BaseData data, final int flags, final OnSend callback){
+    public <D extends BaseData> void send(final D data, final int flags, final OnSend callback){
         if(callback!=null)callback.onPrepare(data);
         new Thread(new Runnable() {
             @Override

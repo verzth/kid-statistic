@@ -22,6 +22,36 @@ public abstract class Provider<A extends BaseData, B extends Provider> {
         handler = new Handler(Looper.getMainLooper());
     }
 
+    public B setUserId(int id) {
+        data.userId = String.valueOf(id);
+        return (B)this;
+    }
+
+    public B setUserId(short id) {
+        data.userId = String.valueOf(id);
+        return (B)this;
+    }
+
+    public B setUserId(long id) {
+        data.userId = String.valueOf(id);
+        return (B)this;
+    }
+
+    public B setUserId(String id) {
+        data.userId = id;
+        return (B)this;
+    }
+
+    public B setInteraction() {
+        setInteraction(true);
+        return (B)this;
+    }
+
+    public B setInteraction(boolean interaction) {
+        data.isInteraction = interaction;
+        return (B)this;
+    }
+
     public B setCallforward(String callforward) {
         data.callforward = callforward;
         return (B)this;

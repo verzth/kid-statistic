@@ -18,7 +18,7 @@ import id.kiosku.utils.ScreenDensityReader;
  * Created by Dodi on 01/26/2017.
  */
 @SuppressWarnings("WeakerAccess")
-public class StatisticDriver<A extends BaseData>{
+public class StatisticDriver{
     private Context context;
     private DateTime dateTime;
 
@@ -33,7 +33,7 @@ public class StatisticDriver<A extends BaseData>{
         return new StatisticDriver(context);
     }
 
-    public A attach(@NonNull final A data){
+    public <A extends BaseData> A attach(@NonNull final A data){
         try {
             DeviceDriver deviceDriver = DeviceDriver.with(context);
 

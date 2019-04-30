@@ -45,36 +45,6 @@ public class EventProvider extends Provider<EventData, EventProvider> {
         return this;
     }
 
-    public EventProvider setUserId(int id) {
-        data.userId = String.valueOf(id);
-        return this;
-    }
-
-    public EventProvider setUserId(short id) {
-        data.userId = String.valueOf(id);
-        return this;
-    }
-
-    public EventProvider setUserId(long id) {
-        data.userId = String.valueOf(id);
-        return this;
-    }
-
-    public EventProvider setUserId(String id) {
-        data.userId = id;
-        return this;
-    }
-
-    public EventProvider setInteraction() {
-        setInteraction(true);
-        return this;
-    }
-
-    public EventProvider setInteraction(boolean interaction) {
-        data.isInteraction = interaction;
-        return this;
-    }
-
     public EventProvider setSuccess() {
         return setSuccess(true);
     }

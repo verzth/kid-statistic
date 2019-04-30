@@ -11,16 +11,6 @@ public class ContentProvider extends Provider<ContentData, ContentProvider> {
         super(data);
     }
 
-    public ContentProvider setInteraction() {
-        setInteraction(true);
-        return this;
-    }
-
-    public ContentProvider setInteraction(boolean interaction) {
-        data.isInteraction = interaction;
-        return this;
-    }
-
     public ContentProvider setId(int id) {
         data.ID = String.valueOf(id);
         return this;
@@ -38,26 +28,6 @@ public class ContentProvider extends Provider<ContentData, ContentProvider> {
 
     public ContentProvider setId(String id) {
         data.ID = id;
-        return this;
-    }
-
-    public ContentProvider setUserId(int id) {
-        data.userId = String.valueOf(id);
-        return this;
-    }
-
-    public ContentProvider setUserId(short id) {
-        data.userId = String.valueOf(id);
-        return this;
-    }
-
-    public ContentProvider setUserId(long id) {
-        data.userId = String.valueOf(id);
-        return this;
-    }
-
-    public ContentProvider setUserId(String id) {
-        data.userId = id;
         return this;
     }
 

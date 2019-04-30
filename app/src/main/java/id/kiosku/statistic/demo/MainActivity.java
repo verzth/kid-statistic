@@ -40,16 +40,25 @@ public class MainActivity extends AppCompatActivity {
         contentProvider.addData(
                 StatisticManager.createContent()
                         .setId(1).setType("test").setCategory("test").setAction("test")
+                        .putCustom("device_brand","Samsung")
+                        .putCustom("device_type","S8Plus")
+                        .putCustom("custom","1")
                         .build()
         );
         contentProvider.addData(
                 StatisticManager.createContent()
                         .setId(2).setType("test").setCategory("test").setAction("test")
+                        .putCustom("device_brand","Samsung")
+                        .putCustom("device_type","S8Plus")
+                        .putCustom("custom","2")
                         .build()
         );
         contentProvider.addData(
                 StatisticManager.createContent()
                         .setId(3).setType("test").setCategory("test").setAction("test")
+                        .putCustom("device_brand","Samsung")
+                        .putCustom("device_type","S8Plus")
+                        .putCustom("custom","3")
                         .build()
         );
         contentProvider.send();
@@ -65,6 +74,8 @@ public class MainActivity extends AppCompatActivity {
                         .setCategory("permission")
                         .setName("location_granted")
                         .setSuccess()
+                        .putCustom("device_brand","Samsung")
+                        .putCustom("device_type","S8Plus")
                         .send();
             }
         }
