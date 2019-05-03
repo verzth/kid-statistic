@@ -199,31 +199,31 @@
      
  5. **Provider**, it help you get statistic data and manage the sender especially in bulk data.
  
-   | No | Method | Return | Description |
-   | :--: | :------ | :------: | :----------- |
-   | 1 | Provider.**setUserId(String id)** | X extends Provider | Set the statistic data user id manually with **String** value |
-   | 2 | Provider.**setUserId(int id)** | X extends Provider | Set the statistic data user id manually with **int** value |
-   | 3 | Provider.**setUserId(long id)** | X extends Provider | Set the statistic data user id manually with **long** value |
-   | 4 | Provider.**setUserId(short id)** | X extends Provider | Set the statistic data user id manually with **short** value |
-   | 5 | Provider.**setInteraction(boolean interaction)** | X extends Provider | Set the statistic data interaction flag |
-   | 6 | Provider.**setInteraction()** | X extends Provider | Set the statistic data interaction flag to **true** |
-   | 7 | Provider.**setCallforward(String callforward)** | X extends Provider | Set the statistic data callforward link |
-   | 8 | Provider.**putCustom(String name, String value)** | X extends Provider | Add custom attributes with **String** value |
-   | 9 | Provider.**putCustom(String name, int value)** | X extends Provider | Add custom attributes with **int** value |
-   | 10 | Provider.**putCustom(String name, long value)** | X extends Provider | Add custom attributes with **long** value |
-   | 11 | Provider.**putCustom(String name, short value)** | X extends Provider | Add custom attributes with **short** value |
-   | 12 | Provider.**putCustom(String name, float value)** | X extends Provider | Add custom attributes with **float** value |
-   | 13 | Provider.**putCustom(String name, double value)** | X extends Provider | Add custom attributes with **double** value |
-   | 14 | Provider.**putCustom(String name, char value)** | X extends Provider | Add custom attributes with **char** value |
-   | 15 | Provider.**clearCustom()** | X extends Provider | Clear all custom value |
-   | 16 | Provider.**addData(<Y extends BaseData> data)** | X extends Provider | Add data to bulk pool |
-   | 17 | Provider.**clearData()** | X extends Provider | Clear all bulk data |
-   | 18 | Provider.**withTimeout(int milliseconds)** | X extends Provider | Set bulk data auto send to timeout mode with given timeout in milliseconds |
-   | 19 | Provider.**withTimeout()** | X extends Provider | Set bulk data auto send to timeout mode with default **5.000 milliseconds** |
-   | 20 | Provider.**withTotal(int total)** | X extends Provider | Set bulk data auto send to total mode with given total data count. Total Mode has timeout **10.000 milliseconds** |
-   | 21 | Provider.**withTotal()** | X extends Provider | Set bulk data auto send to total mode with default **10 data count**. Total Mode has timeout **10.000 milliseconds** |
-   | 22 | Provider.**send()** | void | Send Statistic Data |
-   | 23 | Provider.**build()** | Y extends BaseData | Get statistic data |
+    | No | Method | Return | Description |
+    | :--: | :------ | :------: | :----------- |
+    | 1 | Provider.**setUserId(String id)** | X extends Provider | Set the statistic data user id manually with **String** value |
+    | 2 | Provider.**setUserId(int id)** | X extends Provider | Set the statistic data user id manually with **int** value |
+    | 3 | Provider.**setUserId(long id)** | X extends Provider | Set the statistic data user id manually with **long** value |
+    | 4 | Provider.**setUserId(short id)** | X extends Provider | Set the statistic data user id manually with **short** value |
+    | 5 | Provider.**setInteraction(boolean interaction)** | X extends Provider | Set the statistic data interaction flag |
+    | 6 | Provider.**setInteraction()** | X extends Provider | Set the statistic data interaction flag to **true** |
+    | 7 | Provider.**setCallforward(String callforward)** | X extends Provider | Set the statistic data callforward link |
+    | 8 | Provider.**putCustom(String name, String value)** | X extends Provider | Add custom attributes with **String** value |
+    | 9 | Provider.**putCustom(String name, int value)** | X extends Provider | Add custom attributes with **int** value |
+    | 10 | Provider.**putCustom(String name, long value)** | X extends Provider | Add custom attributes with **long** value |
+    | 11 | Provider.**putCustom(String name, short value)** | X extends Provider | Add custom attributes with **short** value |
+    | 12 | Provider.**putCustom(String name, float value)** | X extends Provider | Add custom attributes with **float** value |
+    | 13 | Provider.**putCustom(String name, double value)** | X extends Provider | Add custom attributes with **double** value |
+    | 14 | Provider.**putCustom(String name, char value)** | X extends Provider | Add custom attributes with **char** value |
+    | 15 | Provider.**clearCustom()** | X extends Provider | Clear all custom value |
+    | 16 | Provider.**addData(<Y extends BaseData> data)** | X extends Provider | Add data to bulk pool |
+    | 17 | Provider.**clearData()** | X extends Provider | Clear all bulk data |
+    | 18 | Provider.**withTimeout(int milliseconds)** | X extends Provider | Set bulk data auto send to timeout mode with given timeout in milliseconds |
+    | 19 | Provider.**withTimeout()** | X extends Provider | Set bulk data auto send to timeout mode with default **5.000 milliseconds** |
+    | 20 | Provider.**withTotal(int total)** | X extends Provider | Set bulk data auto send to total mode with given total data count. Total Mode has timeout **10.000 milliseconds** |
+    | 21 | Provider.**withTotal()** | X extends Provider | Set bulk data auto send to total mode with default **10 data count**. Total Mode has timeout **10.000 milliseconds** |
+    | 22 | Provider.**send()** | void | Send Statistic Data |
+    | 23 | Provider.**build()** | Y extends BaseData | Get statistic data |
    
 6. **HitProvider**, extends Provider without any modification.
 7. **ContentProvider**, extends Provider with some additional methods.
@@ -256,49 +256,49 @@
    
 9. **OnSend** interface.
    
-   ```
-   package id.kiosku.statistic;
-   
-   public interface OnSend<T> {
+    ```
+    package id.kiosku.statistic;
+    
+    public interface OnSend<T> {
        void onPrepare(T data);
        void onSent(T data);
        void onFail(T data);
-   }
-   ```
-   
-   sample usage
-   ```
-   StatisticManager.getInstance().send(data, StatisticManager.HIT, new OnSend<HitData>(){
+    }
+    ```
+    
+    sample usage
+    ```
+    StatisticManager.getInstance().send(data, StatisticManager.HIT, new OnSend<HitData>(){
         @Override
         public void onPrepare(HitData data) {
             // DO SOMETHING
         }
-
+    
         @Override
         public void onFail(HitData data) {
             // DO SOMETHING
         }
-
+    
         @Override
         public void onSent(HitData data) {
             // DO SOMETHING
         }
     });
-   ```
+    ```
    
 10. **StatisticConfig** annotation to set the statistic api url.
 
-   ```
-   @StatisticConfig(
+    ```
+    @StatisticConfig(
        url = "https://example.com/fig/"
-   )
-   public class BaseApplication extends Application {
+    )
+    public class BaseApplication extends Application {
        @Override
        public void onCreate() {
            // DO SOMETHING
        }
-   }
-   ```
+    }
+    ```
    
 11. **StatisticUtility** bring some pieces of function which is needed by some process.
 
