@@ -29,11 +29,19 @@ public class StatisticManager {
     private TCX tcx;
 
     public static void init(Context context){
-        init(context,null);
+        init(context,(TCX)null);
     }
 
-    public static void init(Context context, TCX tcx) {
-        StatisticManager.manager = new StatisticManager(context,tcx);
+    public static void init(Context context, String url){
+        init(context, url, null);
+    }
+
+    public static void init(Context context, TCX tcx){
+        StatisticManager.manager = new StatisticManager(context, tcx);
+    }
+
+    public static void init(Context context, String url, TCX tcx) {
+        StatisticManager.manager = new StatisticManager(context, url, tcx);
     }
 
     public static final int HIT = 0;
@@ -49,12 +57,18 @@ public class StatisticManager {
     }
 
     public StatisticManager(Context context){
-        this(context,null);
+        this(context,(TCX)null);
     }
     public StatisticManager(Context context, TCX tcx){
+        this(context,context.getApplicationContext().getClass().getAnnotation(StatisticConfig.class).url(),tcx);
+    }
+
+    public StatisticManager(Context context, String url){
+        this(context, url,null);
+    }
+    public StatisticManager(Context context, String url, TCX tcx){
         this.context = context;
         this.tcx = tcx;
-        String baseUrl = context.getApplicationContext().getClass().getAnnotation(StatisticConfig.class).url();
 
         OkHttpClient okHttpClient = new OkHttpClient.Builder()
                 .connectTimeout(3, TimeUnit.SECONDS)
@@ -65,17 +79,26 @@ public class StatisticManager {
                 .build();
 
         apis = new Retrofit.Builder()
-                .baseUrl(baseUrl)
+                .baseUrl(url)
                 .addConverterFactory(GsonConverterFactory.create())
                 .client(okHttpClient)
                 .build();
     }
 
     public static StatisticManager with(Context context){
-        return with(context,null);
+        return with(context,(TCX)null);
     }
+
+    public static StatisticManager with(Context context, String url){
+        return with(context,url,null);
+    }
+
     public static StatisticManager with(Context context, TCX tcx){
         return new StatisticManager(context, tcx);
+    }
+
+    public static StatisticManager with(Context context, String url, TCX tcx){
+        return new StatisticManager(context, url, tcx);
     }
 
     private EventListener listener;

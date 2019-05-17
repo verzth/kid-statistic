@@ -72,23 +72,27 @@
    | :--: | :------ | :------: | :----------- |
    | 1 | StatisticManager.**init(Context context)** | void | Initialize Global StatisticManager Instance |
    | 2 | StatisticManager.**init(Context context, TCX tcx)** | void | Initialize Global StatisticManager Instance with Injected Standalone TCX |
-   | 3 | StatisticManager.**with(Context context)** | StatisticManager | Create StatisticManager Instance |
-   | 4 | StatisticManager.**with(Context context, TCX tcx)** | StatisticManager | Create StatisticManager Instance with Injected Standalone TCX |
-   | 5 | StatisticManager.**createHit()** | HitProvider | Create HitProvider to construct HitData |
-   | 6 | StatisticManager.**createContent()** | ContentProvider | Create ContentProvider to construct ContentData |
-   | 7 | StatisticManager.**createEvent()** | EventProvider | Create EventProvider to construct EventData |
-   | 8 | StatisticManager.**triggerStart(<X extends BaseData> data)** | void | Start counter in statistic data to count access time |
-   | 9 | StatisticManager.**triggerEnd(<X extends BaseData> data)** | void | Stop counter in statistic data, **longTime** will return 0 if triggerStart never called |
-   | 10 | StatisticManager.**getSession()** | String | Get Session ID |
-   | 11 | StatisticManager.**startSession()** | void | Start new session and replace existing Session ID with the new one, auto call on application open, so you don't need to call it in standard flow |
-   | 12 | StatisticManager.**setSession(String sessionID)** | void | Set Session ID with your preferred ID |
-   | 13 | StatisticManager.**getScreenView()** | String | Get screen view name, default 'NoPage' |
-   | 14 | StatisticManager.**setScreenView(String name)** | void | Set screen view name (Ex: 'MainActivity', 'HomeActivity', or your preferred name) |
-   | 15 | StatisticManager.**getScreenType()** | String | Get screen type name, default 'mobile' |
-   | 16 | StatisticManager.**setScreenType(String name)** | void | Set screen type name (Ex: 'mobile', 'android', 'tablet', or your preferred name) |
-   | 17 | StatisticManager.**getUserID()** | String | Get User ID |
-   | 18 | StatisticManager.**setUserID(String ID)** | void | Set User ID for specific logged in user tracking |
-   | 19 | StatisticManager.**getInstance()** | StatisticManager | Get Global StatisticManager Instance |
+   | 3 | StatisticManager.**init(Context context, String url)** | void | Initialize Global StatisticManager Instance with url parameter |
+   | 4 | StatisticManager.**init(Context context, String url, TCX tcx)** | void | Initialize Global StatisticManager Instance with url parameter and Injected Standalone TCX |
+   | 5 | StatisticManager.**with(Context context)** | StatisticManager | Create StatisticManager Instance |
+   | 6 | StatisticManager.**with(Context context, TCX tcx)** | StatisticManager | Create StatisticManager Instance with Injected Standalone TCX |
+   | 7 | StatisticManager.**with(Context context, String url)** | StatisticManager | Create StatisticManager Instance with url parameter |
+   | 8 | StatisticManager.**with(Context context, String url, TCX tcx)** | StatisticManager | Create StatisticManager Instance with url parameter and Injected Standalone TCX |
+   | 9 | StatisticManager.**createHit()** | HitProvider | Create HitProvider to construct HitData |
+   | 10 | StatisticManager.**createContent()** | ContentProvider | Create ContentProvider to construct ContentData |
+   | 11 | StatisticManager.**createEvent()** | EventProvider | Create EventProvider to construct EventData |
+   | 12 | StatisticManager.**triggerStart(<X extends BaseData> data)** | void | Start counter in statistic data to count access time |
+   | 13 | StatisticManager.**triggerEnd(<X extends BaseData> data)** | void | Stop counter in statistic data, **longTime** will return 0 if triggerStart never called |
+   | 14 | StatisticManager.**getSession()** | String | Get Session ID |
+   | 15 | StatisticManager.**startSession()** | void | Start new session and replace existing Session ID with the new one, auto call on application open, so you don't need to call it in standard flow |
+   | 16 | StatisticManager.**setSession(String sessionID)** | void | Set Session ID with your preferred ID |
+   | 17 | StatisticManager.**getScreenView()** | String | Get screen view name, default 'NoPage' |
+   | 18 | StatisticManager.**setScreenView(String name)** | void | Set screen view name (Ex: 'MainActivity', 'HomeActivity', or your preferred name) |
+   | 19 | StatisticManager.**getScreenType()** | String | Get screen type name, default 'mobile' |
+   | 20 | StatisticManager.**setScreenType(String name)** | void | Set screen type name (Ex: 'mobile', 'android', 'tablet', or your preferred name) |
+   | 21 | StatisticManager.**getUserID()** | String | Get User ID |
+   | 22 | StatisticManager.**setUserID(String ID)** | void | Set User ID for specific logged in user tracking |
+   | 23 | StatisticManager.**getInstance()** | StatisticManager | Get Global StatisticManager Instance |
    
 4. Data Model.
    
